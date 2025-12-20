@@ -6,7 +6,7 @@ Previously, if you wanted the images, you’d have to load that .molru file into
 
 So, I wrote a program (okay, I lied, I asked Gemini AI to write it and I just tweaked it to my liking). It can help you handle that entire process in under 5 seconds. All you need to do is select the .molru file in the program, and it will automatically export all the images for you.
 
-The program has been checked on VirusTotal, so you can use it with peace of mind. If you get a virus warning, it’s likely a false positive—you can temporarily disable your antivirus or just ignore the warning.
+The program has been checked on VirusTotal, so you can use it with peace of mind. If you get a virus warning, it’s likely a false positive - you can temporarily disable your antivirus or just ignore the warning.
 
 Here are the locations of the .molru files (start from the drive where you installed Steam):
 

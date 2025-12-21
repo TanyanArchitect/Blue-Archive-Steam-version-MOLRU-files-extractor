@@ -23,4 +23,5 @@ Update: I've added a feature to extract both Audio and Video formats (even thoug
 3. Navigate to the Blue Archive data folder and select the .molru file you want to unpack.
 4. Click the big Green button "BẮT ĐẦU QUÉT & GIẢI NÉN" (Start Scan & Extract).
 5. Wait for the progress bar to finish. The tool will automatically open a new folder containing your extracted files, neatly organized into subfolders (jpg, png, ogg, webm, etc.).
+
 (Note: If you extract the same file twice, don't worry—the tool will create a new folder like "FolderName (1)" so it won't overwrite your previous work.)

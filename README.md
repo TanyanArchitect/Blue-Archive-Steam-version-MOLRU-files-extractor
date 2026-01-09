@@ -1,27 +1,108 @@
---- For fellow Blue Archive players on Steam ---
+# 📁 Blue Archive (Steam) - Asset Extractor
 
-For those of you playing the Steam version who enjoy digging into game files like I do (for editing images, making videos, or whatever else), you might have noticed that after the recent update, the game has packaged all image files into a single file with the .molru extension.
+<div align="center">
 
-Previously, if you wanted the images, you’d have to load that .molru file into a hex editor, filter out every single image hex code manually (I estimate there are over 1000 images), export them one by one, and then search for the needle in a haystack to find exactly what you need. Doing that is a massive headache and a waste of time (and I bet none of you are actually insane enough to do that manually).
+![Version](https://img.shields.io/badge/version-v8.3-blue?style=for-the-badge&logo=python)
+![Platform](https://img.shields.io/badge/platform-Windows-brightgreen?style=for-the-badge&logo=windows)
+![Language](https://img.shields.io/badge/language-English%20%7C%20Vietnamese-orange?style=for-the-badge)
+![Downloads](https://img.shields.io/github/downloads/TanyanArchitect/Blue-Archive-Steam-version-MOLRU-files-extractor/total?style=for-the-badge&color=purple)
 
-So, I wrote a program (okay, I lied, I asked Gemini AI to write it and I just tweaked it to my liking). It can handle that entire process for you in under 5 seconds. All you need to do is input the .molru file path into the program, and it will automatically export all the images for you. The program has been verified on VirusTotal, so you can use it with peace of mind. If you get a virus warning, just temporarily disable your antivirus or ignore it (it's likely a false positive).
+**A fast, safe, and easy-to-use tool to extract Assets from Blue Archive (Steam Version).**
+*Dành cho cộng đồng game thủ Blue Archive Việt Nam và Quốc tế.*
 
-Here are the paths to the .molru files for you to choose from (start from the drive where you installed Steam):
+[📥 Download Latest Version](https://github.com/TanyanArchitect/Blue-Archive-Steam-version-MOLRU-files-extractor/releases) • [🐛 Report Bug](https://github.com/TanyanArchitect/Blue-Archive-Steam-version-MOLRU-files-extractor/issues)
 
-Prologue Images (The part you play while the game is installing data): Steam\steamapps\common\BlueArchive\BlueArchive_Data\StreamingAssets\PUB\Resource\Preload\MediaResources\UIs\03_Scenario
+</div>
 
-Images for the entire game: Steam\steamapps\common\BlueArchive\BlueArchive_Data\StreamingAssets\PUB\Resource\GameData\MediaResources\UIs\03_Scenario
+---
 
-(Note: In these folders, you can also find the game's video and audio files if you want to mess around with those too.)
+## 🖼️ Interface (Giao diện)
 
-If you have any issues, suggestions, or want to add/remove features, just let me know, and I'll update the program regularly. Enjoy!
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/9f179237-ebea-42ec-9f52-e28aa517e8bd" alt="Tool Screenshot" width="80%">
+  <br>
+  <i>Giao diện trực quan, hỗ trợ Đa ngôn ngữ và Chọn file cộng dồn.</i>
+</div>
 
-Update: I've added a feature to extract both Audio and Video formats (even though game video files aren't usually compressed this way). You can find the .molru files containing audio in the folders named Audio. These files include student voice lines, background music (BGM), and sound effects (SFX).
+---
 
-1. Right-click BA Steam file extractor.exe and select "Run as Administrator" (recommended to avoid permission errors).
-2. Click the "..." button (or "Chọn File") to browse for files.
-3. Navigate to the Blue Archive data folder and select the .molru file you want to unpack.
-4. Click the big Green button "BẮT ĐẦU QUÉT & GIẢI NÉN" (Start Scan & Extract).
-5. Wait for the progress bar to finish. The tool will automatically open a new folder containing your extracted files, neatly organized into subfolders (jpg, png, ogg, webm, etc.).
+## 👋 Introduction
 
-(Note: If you extract the same file twice, don't worry - the tool will create a new folder like "FolderName (1)" so it won't overwrite your previous work.)
+For those playing the Steam version who enjoy digging into game files (for editing, videos, or memes), you noticed that the recent update packaged assets into **`.molru`** files. Manually extracting them via Hex Editor is a nightmare.
+
+This tool automates that process. Just point it to the files, and it handles the rest in seconds.
+
+## 🚀 Key Features (Tính năng)
+
+| Feature | Description |
+| :--- | :--- |
+| **⚡ Lightning Fast** | Scans and extracts thousands of assets in seconds. |
+| **📂 Batch & Cumulative** | **(New in v8.3)** Select files from multiple folders at once. Append new files to your list easily. |
+| **🌎 Multi-Language** | Fully supports **English** and **Vietnamese** (Tiếng Việt). |
+| **🛡️ Safe Mode** | Runs in **Read-Only** mode. Never modifies your original game files. |
+| **📦 Smart Sort** | Automatically sorts files into subfolders by type. |
+
+### 🎵 Supported Formats
+The tool automatically detects and categorizes:
+* **Images:** `.jpg`, `.png`, `.webp` (Character arts, UI, Icons)
+* **Audio:** `.ogg`, `.wav`, `.mp3` (BGM, Voice lines, SFX)
+* **Video:** `.webm` (Cutscenes, PVs)
+
+---
+
+## 📥 Installation & Usage
+
+1.  **Download** the `.exe` from [Releases](https://github.com/TanyanArchitect/Blue-Archive-Steam-version-MOLRU-files-extractor/releases).
+2.  **Right-click** -> **Run as Administrator** (Recommended).
+3.  Click **"Add Files..."** (hoặc "Thêm file...") to select `.molru` or `.bundle` files.
+    * *Tip:* You can navigate to different folders and add more files. The list will accumulate.
+4.  *(Optional)* Click **"Clear"** if you want to reset your selection.
+5.  Click **"START SCAN & EXTRACT"**.
+6.  Enjoy! The output folder opens automatically.
+
+### 📂 Output Structure
+Extracted files are organized like this:
+```text
+Source_File_Extracted/
+├── jpg/      # Standard images
+├── png/      # Transparent icons/UI
+├── webp/     # Animations
+├── ogg/      # Audio files
+└── webm/     # Videos
+```
+
+## 📍 Where are the Game Files?
+Navigate to your Steam installation folder. The path usually looks like this:
+
+```text
+Steam\steamapps\common\BlueArchive\BlueArchive_Data\StreamingAssets\PUB\Resource\
+```
+* **Prologue Images:** `...\Resource\Preload\MediaResources\UIs\03_Scenario`
+* **All Game Images:** `...\Resource\GameData\MediaResources\UIs\03_Scenario`
+* **Voices/BGM:** Look for folders named `Audio`.
+
+---
+
+## ⚠️ Important Notes
+
+> [!WARNING]
+> **False Positive Virus Warning:**
+> Because this tool is compiled with **PyInstaller** and unsigned, Windows Defender might flag it as "Wacatac" or "Trojan". **This is a false positive.** The source code is open-source for you to verify. Please add an exclusion to run it.
+
+> [!NOTE]
+> **Repack/Modding:**
+> Currently **IMPOSSIBLE**. The `.molru` header is encrypted. We can extract (read) but cannot repack (write) without causing a black screen.
+
+---
+
+## 📜 Latest Update (v8.3)
+* **Feature:** Select files from multiple folders (Cumulative Selection).
+* **UI:** Added "Clear" button to reset selection.
+* **Fix:** Config file now saves correctly next to the `.exe` file.
+
+---
+
+<div align="center">
+  <b>Made with ❤️ by TanyanArchitect & Gemini AI</b><br>
+  <i>Enjoy the game, Sensei!</i>
+</div>

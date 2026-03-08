@@ -2,9 +2,9 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-v8.5-blue?style=for-the-badge&logo=python)
+![Version](https://img.shields.io/badge/version-v8.6-blue?style=for-the-badge&logo=python)
 ![Platform](https://img.shields.io/badge/platform-Windows-brightgreen?style=for-the-badge&logo=windows)
-![Language](https://img.shields.io/badge/language-English%20%7C%20Vietnamese-orange?style=for-the-badge)
+![Language](https://img.shields.io/badge/language-EN%20%7C%20VN%20%7C%20CN%20%7C%20JP%20%7C%20KR-orange?style=for-the-badge)
 ![Downloads](https://img.shields.io/github/downloads/TanyanArchitect/Blue-Archive-Steam-version-MOLRU-files-extractor/total?style=for-the-badge&color=purple)
 
 **A fast, safe, and easy-to-use tool to extract Assets from Blue Archive (Steam Version).**
@@ -30,14 +30,14 @@
 
 For those playing the Steam version who enjoy digging into game files (for editing, videos, or memes), you noticed that the recent update packaged assets into **`.molru`** files. Manually extracting them via Hex Editor is a nightmare.
 
-This tool automates that process. This tool automates that process. Just Drag & Drop files into the tool, and it handles the rest in seconds.
+This tool automates that process. Just **Drag & Drop** files into the tool, and it handles the rest in seconds.
 
 ## 🚀 Key Features (Tính năng)
 
 | Feature | Description |
 | :--- | :--- |
 | **⚡ Lightning Fast** | Scans and extracts thousands of assets in seconds. |
-| **🌎 Multi-Language** | Fully supports **English** and **Vietnamese** (Tiếng Việt). |
+| **🌎 Multi-Language** | Fully supports **English**, **Vietnamese**, **Chinese**, **Japanese**, and **Korean**. |
 | **🛡️ Safe Mode** | Runs in **Read-Only** mode. Never modifies your original game files. |
 | **👋 Drag & Drop** | **(New in v8.4)** Simply drag `.molru` or `.bundle` files from Explorer directly into the tool. |
 | **📂 Smart Organization** | **(New in v8.5)** Extracts to `BA_Extracted` folder. Auto-sorts by type and auto-increments folders to prevent overwriting (e.g., `jpg (1)`). |
@@ -80,8 +80,8 @@ If you want to modify the source code or build the `.exe` yourself, please follo
 
 ### 1. Prerequisites
 * **Python 3.x** installed.
-* Download the source code (`extractor.py`).
-* **Important:** Ensure the `my_icon.ico` file is present in the same directory as the script (required for the build command).
+* Download the source code (`extractor.py` and `locales.py`).
+* **Important:** Ensure both `locales.py` and the `my_icon.ico` file are present in the same directory as the main script.
 
 ### 2. Install Dependencies
 This project uses `tkinterdnd2` for the Drag & Drop feature, which is not included in standard Python.
@@ -101,10 +101,10 @@ python extractor.py
 *Note: When running the raw Python script, a console window will appear alongside the GUI. This is normal and used for displaying debug logs.*
 
 ### 4. Build .EXE (PyInstaller)
-To package the app into a standalone `.exe`, run the command below. Important: You must include the `--collect-all tkinterdnd2` argument, otherwise the drag-and-drop feature will cause the app to crash immediately.
+To package the app into a standalone `.exe`, run the command below. **Important:** You must include the `--collect-all tkinterdnd2` argument, otherwise the drag-and-drop feature will cause the app to crash immediately.
 
 ```bash
-pyinstaller --noconsole --onefile --icon=my_icon.ico --add-data "my_icon.ico;." --collect-all tkinterdnd2 --name="BlueArchiveExtractor_v8.5" extractor.py
+pyinstaller --noconsole --onefile --icon=my_icon.ico --add-data "my_icon.ico;." --collect-all tkinterdnd2 --name="BlueArchiveExtractor_v8.6" extractor.py
 ```
 
 **Command Flags Explained:**
@@ -143,15 +143,14 @@ Steam\steamapps\common\BlueArchive\BlueArchive_Data\StreamingAssets\PUB\Resource
 
 ---
 
-## 📜 Latest Update (v8.5)
-* **Folder Structure:** Unified output to `BA_Extracted` folder.
-* **Smart Versioning:** Fixed overwriting issues by auto-incrementing subfolders (e.g., `jpg (1)`).
-* **Auto-Open:** Restored functionality to open the destination folder after extraction.
-* **Drag & Drop:** Fully implemented file dragging (requires `tkinterdnd2`).
+## 📜 Latest Update (v8.6 - Global Edition)
+* **Multi-Language:** Added support for Chinese (CN), Japanese (JP), and Korean (KR). Now supports 5 languages in total!
+* **Open Source:** Huge thanks to [Shiroko (SS3-4001)](https://github.com/SS3-4001) for the translation contributions!
+* **Optimization:** Separated language data into `locales.py` for a cleaner and more maintainable code structure.
 
 ---
 
 <div align="center">
-  <b>Made with ❤️ by TanyanArchitect & Gemini AI</b><br>
+  <b>Made with ❤️ by TanyanArchitect, Contributors & Gemini AI</b><br>
   <i>Enjoy the game, Sensei!</i>
 </div>

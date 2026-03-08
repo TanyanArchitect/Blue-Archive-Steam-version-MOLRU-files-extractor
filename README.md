@@ -19,7 +19,7 @@
 ## 🖼️ Interface (Giao diện)
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/9841d878-06bb-416e-82ad-619c85ad0298" alt="Tool Screenshot" width="80%">
+  <img src="https://github.com/user-attachments/assets/80906772-f80d-4a36-a473-14b9eb5ef09c" alt="Tool Screenshot" width="80%">
   <br>
   <i>Giao diện trực quan, hỗ trợ Đa ngôn ngữ và Chọn file cộng dồn.</i>
 </div>

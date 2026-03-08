@@ -12,6 +12,12 @@ import json
 import webbrowser
 
 try:
+    from locales import TRANSLATIONS, CHANGELOGS
+except ImportError:
+    print("Thiếu file locales.py! Vui lòng đặt file này cùng thư mục với extractor.py.")
+    sys.exit()
+
+try:
     from tkinterdnd2 import DND_FILES, TkinterDnD
 except ImportError:
     print("Thiếu thư viện tkinterdnd2. Vui lòng chạy: pip install tkinterdnd2")
@@ -19,7 +25,7 @@ except ImportError:
 
 GITHUB_USER = "TanyanArchitect"
 GITHUB_REPO = "Blue-Archive-Steam-version-MOLRU-files-extractor"
-CURRENT_VERSION = "v8.5"
+CURRENT_VERSION = "v8.6"
 
 def get_app_path():
     if getattr(sys, 'frozen', False):
@@ -28,216 +34,6 @@ def get_app_path():
         return os.path.dirname(os.path.abspath(__file__))
 
 CONFIG_FILE = os.path.join(get_app_path(), "config.json")
-
-TRANSLATIONS = {
-    "VN": {
-        "title": f"Blue Archive Extractor {CURRENT_VERSION}",
-        "header": "BLUE ARCHIVE ASSET EXTRACTOR",
-        "ver_prefix": "Phiên bản:",
-        "warning": "⚠️ LƯU Ý: Vui lòng TẮT GAME trước khi giải nén!",
-        "grp_input": "Kéo thả file vào đây hoặc bấm chọn",
-        "btn_browse": "Thêm file...",
-        "btn_clear": "Xóa chọn",
-        "btn_extract": "BẮT ĐẦU QUÉT & GIẢI NÉN",
-        "btn_history": "Lịch sử cập nhật",
-        "status_check": "Đang kiểm tra cập nhật...",
-        "status_offline": "Chế độ Offline.",
-        "status_latest": "Bạn đang dùng bản mới nhất.",
-        "status_ready": "Sẵn sàng. Kéo file vào để bắt đầu.",
-        "status_processing": "Đang xử lý file {}/{} : {}",
-        "status_done": "Hoàn tất! Đã xử lý {} file.",
-        "credit": "Made by Community | Powered by Python",
-        "msg_error_title": "Lỗi",
-        "msg_select_file": "Vui lòng chọn ít nhất một file!",
-        "msg_warn_game_running": "CẢNH BÁO: Game Blue Archive đang chạy!\nHãy tắt game để tránh lỗi file.\nBạn có muốn tiếp tục không?",
-        "msg_complete_title": "Hoàn tất",
-        "msg_complete_body": "Đã giải nén xong!\nTổng số file: {}\nĐã mở thư mục chứa file.",
-        "update_msg": "Đã có phiên bản mới: {}!\n\nBạn đang dùng: {}\nBạn có muốn tải về ngay không?",
-        "changelog_title": "Lịch sử cập nhật",
-        "lbl_lang": "Ngôn ngữ / Language:",
-        "txt_selected": "Tổng cộng: {} file (Kéo thả hoặc chọn thêm)",
-        "txt_no_select": "Chưa có file nào (Kéo file vào đây)"
-    },
-    "EN": {
-        "title": f"Blue Archive Extractor {CURRENT_VERSION}",
-        "header": "BLUE ARCHIVE ASSET EXTRACTOR",
-        "ver_prefix": "Version:",
-        "warning": "⚠️ WARNING: Please CLOSE THE GAME before extracting!",
-        "grp_input": "Drag & Drop files here or Browse",
-        "btn_browse": "Add Files...",
-        "btn_clear": "Clear",
-        "btn_extract": "START SCAN & EXTRACT",
-        "btn_history": "Changelog",
-        "status_check": "Checking for updates...",
-        "status_offline": "Offline Mode.",
-        "status_latest": "You are using the latest version.",
-        "status_ready": "Ready. Drag files to start.",
-        "status_processing": "Processing file {}/{} : {}",
-        "status_done": "Done! Processed {} files.",
-        "credit": "Made by Community | Powered by Python",
-        "msg_error_title": "Error",
-        "msg_select_file": "Please select at least one file!",
-        "msg_warn_game_running": "WARNING: Blue Archive is running!\nPlease close the game to avoid file corruption.\nDo you want to continue anyway?",
-        "msg_complete_title": "Completed",
-        "msg_complete_body": "Extraction finished!\nTotal files: {}\nOutput folder opened.",
-        "update_msg": "New version available: {}!\n\nCurrent: {}\nDownload now?",
-        "changelog_title": "Changelog",
-        "lbl_lang": "Ngôn ngữ / Language:",
-        "txt_selected": "Total: {} files (Drag & Drop supported)",
-        "txt_no_select": "No files selected (Drag files here)"
-    }
-}
-
-CHANGELOGS = {
-    "VN": """
-=== LỊCH SỬ CẬP NHẬT ===
-
-[V8.5 - Cấu trúc thư mục mới]
-- FOLDER: Gom tất cả vào thư mục "BA_Extracted" cho gọn gàng.
-- THÔNG MINH: Tự động đánh số thư mục loại file (ví dụ: jpg (1)) để tránh ghi đè file cũ.
-- AUTO-OPEN: Khôi phục tính năng tự mở thư mục sau khi giải nén xong.
-
-[V8.4 - Kéo & Thả]
-- TÍNH NĂNG: Hỗ trợ Kéo & Thả (Drag'n'Drop) file trực tiếp từ thư mục vào phần mềm.
-- Tiện lợi hơn khi bạn đang mở sẵn thư mục game.
-
-[V8.3 - Chọn cộng dồn]
-- TÍNH NĂNG: Cho phép chọn cộng dồn nhiều file từ nhiều thư mục khác nhau (không bị mất danh sách cũ).
-- GIAO DIỆN: Thêm nút "Xóa chọn" (Clear) để làm mới danh sách file.
-- HỆ THỐNG: Cải thiện vị trí lưu file cấu hình (config.json) luôn nằm cạnh file exe.
-
-[V8.2 - Tách biệt ngôn ngữ]
-- GIAO DIỆN: Tách riêng nội dung Changelog cho tiếng Việt và tiếng Anh (không còn hiển thị lẫn lộn).
-- Cập nhật đầy đủ lịch sử phiên bản cho cả 2 ngôn ngữ.
-
-[V8.1 - Sửa lỗi & Hoàn thiện]
-- CÀI ĐẶT: Tự động lưu ngôn ngữ đã chọn vào file config.json (không cần chọn lại mỗi lần mở).
-- GIAO DIỆN: Sửa lỗi hiển thị sai ngôn ngữ khi chuyển đổi qua lại.
-- Sửa lỗi cú pháp nhỏ trong cảnh báo.
-
-[V8.0 - Bản Quốc Tế & Hàng Loạt]
-- ĐA NGÔN NGỮ: Thêm tùy chọn Tiếng Anh / Tiếng Việt.
-- GIẢI NÉN HÀNG LOẠT: Cho phép chọn và giải nén nhiều file cùng lúc.
-- TIẾN TRÌNH: Thêm thanh hiển thị tổng tiến độ xử lý.
-
-[V7.3 - Cập nhật Online]
-- KẾT NỐI: Tự động kiểm tra phiên bản mới từ GitHub khi mở phần mềm.
-- Nếu có bản mới, chương trình sẽ thông báo và dẫn link tải về.
-
-[V7.2 - An toàn là trên hết]
-- AN TOÀN: Tự động phát hiện nếu game Blue Archive đang chạy.
-- CẢNH BÁO: Hiện thông báo nhắc nhở người dùng tắt game trước khi giải nén để tránh xung đột file hoặc lỗi game.
-
-[V7.1 - Giao diện hoàn thiện]
-- GIAO DIỆN: Làm lại giao diện đẹp và gọn gàng hơn.
-- THÔNG TIN: Thêm nút xem "Lịch sử cập nhật".
-
-[V7.0 - Quản lý thư mục thông minh]
-- TÍNH NĂNG MỚI: Tự động đánh số thư mục (Ví dụ: TenFile (1), TenFile (2)...).
-- Giúp không bao giờ bị ghi đè hay mất file cũ nếu lỡ tay giải nén nhiều lần.
-
-[V6.0 - Cập nhật Đa phương tiện]
-- NÂNG CẤP LỚN: Hỗ trợ trích xuất toàn diện.
-- Âm thanh: Nhạc nền, giọng nói nhân vật (OGG, WAV, MP3).
-- Video: Các đoạn phim mở đầu, hoạt cảnh (WEBM).
-- Ảnh động: Các file ảnh WebP.
-- Tự động phân loại file vào từng folder riêng biệt.
-
-[V5.0 - Hỗ trợ File lớn]
-- HIỆU NĂNG: Sửa lỗi treo máy (Not Responding) khi giải nén các file nặng (GB).
-- Tối ưu bộ nhớ cho các máy cấu hình thấp.
-
-[V4.0 - Hỗ trợ PNG & Lọc rác]
-- ẢNH MỚI: Hỗ trợ lấy thêm định dạng ảnh PNG (icon, ảnh trong suốt).
-- LỌC RÁC: Loại bỏ hoàn toàn các file lỗi không mở được.
-
-[V3.0 - Sửa lỗi ảnh mờ]
-- SỬA LỖI: Khắc phục tình trạng cắt nhầm thumbnail khiến ảnh bị mờ.
-- Tự động bỏ qua ảnh nhỏ để lấy ảnh gốc sắc nét nhất.
-
-[V2.0 - Có giao diện]
-- Bỏ màn hình đen (CMD).
-- Thêm cửa sổ trực quan và thanh chạy phần trăm.
-
-[V1.0 - Khởi đầu]
-- Phiên bản sơ khai.
-- Chỉ hỗ trợ tìm và cắt file ảnh JPG.
-""",
-    "EN": """
-=== CHANGELOG ===
-
-[V8.5 - New Folder Structure]
-- FOLDER: All extractions go into "BA_Extracted" folder.
-- SMART VERSIONING: Auto-increments file type folders (e.g., jpg (1)) to prevent overwriting.
-- AUTO-OPEN: Restored the feature to automatically open the folder after extraction.
-
-[V8.4 - Drag & Drop]
-- FEATURE: Supports Drag'n'Drop files directly from Explorer into the app.
-- Much easier if you already have the game folder open.
-
-[V8.3 - Cumulative Selection]
-- FEATURE: Allows selecting files from multiple different folders (files are appended to the list).
-- UI: Added "Clear" button to reset the selection.
-- SYSTEM: Fixed config.json location (always ensures it is saved next to the exe file).
-
-[V8.2 - Language Separation]
-- UI: Separated Changelog content for English and Vietnamese (cleaner view).
-- Updated full version history for both languages.
-
-[V8.1 - Final Polish]
-- SETTINGS: Automatically saves your preferred language to config.json.
-- UI FIX: Fixed text not updating immediately when switching languages.
-- BUG FIX: Fixed a syntax error in the warning message.
-
-[V8.0 - International & Batch Update]
-- MULTI-LANGUAGE: Added English/Vietnamese toggle.
-- BATCH EXTRACT: Now supports selecting and extracting multiple files at once.
-- PROGRESS: Added a total progress bar for batch operations.
-
-[V7.3 - Online Update]
-- CONNECTION: Auto-check for updates from GitHub on startup.
-- Notifies user and provides download link if a new version is available.
-
-[V7.2 - Safety Update]
-- SAFETY: Auto-detects if Blue Archive is currently running.
-- WARNING: Warns user to close the game to prevent file corruption or conflicts.
-
-[V7.1 - UI Polish]
-- UI: Redesigned interface for a cleaner look.
-- INFO: Added "Changelog" button.
-
-[V7.0 - Smart Folder Management]
-- FEATURE: Auto-increments folder names (e.g., File (1), File (2)...).
-- Prevents accidental overwriting of previous extractions.
-
-[V6.0 - Multimedia Support]
-- MAJOR UPGRADE: Full asset extraction support.
-- Audio: BGM, Voices (OGG, WAV, MP3).
-- Video: Opening movies, cutscenes (WEBM).
-- Animation: WebP images.
-- Auto-sorts files into specific subfolders.
-
-[V5.0 - Large File Support]
-- PERFORMANCE: Fixed "Not Responding" freezing issues with large files (GBs).
-- Memory optimization for lower-end PCs.
-
-[V4.0 - PNG & Garbage Filtering]
-- NEW FORMAT: Added PNG support (Icons, transparent images).
-- CLEANUP: Improved filtering to remove invalid/corrupted files.
-
-[V3.0 - Quality Fix]
-- BUG FIX: Fixed an issue where the tool extracted thumbnails instead of full-res images.
-- Logic updated to prioritize high-quality assets.
-
-[V2.0 - GUI Update]
-- Removed Command Line Interface (CMD).
-- Added proper Window UI and Progress Bar.
-
-[V1.0 - Initial Release]
-- Basic version.
-- Only supported JPG extraction.
-"""
-}
 
 class UniversalExtractorApp:
     def __init__(self, root):
@@ -274,9 +70,9 @@ class UniversalExtractorApp:
             if os.path.exists(CONFIG_FILE):
                 with open(CONFIG_FILE, 'r') as f:
                     data = json.load(f)
-                    return data.get("lang", "VN")
+                    return data.get("lang", "EN")
         except: pass
-        return "VN"
+        return "EN"
 
     def save_config(self):
         try:
@@ -302,7 +98,7 @@ class UniversalExtractorApp:
         self.lbl_lang = tk.Label(frame_top, text="Language:", font=("Segoe UI", 9))
         self.lbl_lang.pack(side="right", padx=5)
         
-        cb_lang = ttk.Combobox(frame_top, textvariable=self.lang_var, values=["VN", "EN"], state="readonly", width=5)
+        cb_lang = ttk.Combobox(frame_top, textvariable=self.lang_var, values=["CN", "JP", "KR", "EN", "VN"], state="readonly", width=5)
         cb_lang.pack(side="right")
         cb_lang.bind("<<ComboboxSelected>>", self.change_language)
 
@@ -352,7 +148,8 @@ class UniversalExtractorApp:
         self.apply_language()
 
     def get_text(self, key):
-        return TRANSLATIONS[self.current_lang].get(key, key)
+        lang_dict = TRANSLATIONS.get(self.current_lang, TRANSLATIONS["EN"])
+        return lang_dict.get(key, key)
 
     def apply_language(self):
         t = lambda k: self.get_text(k)
@@ -405,10 +202,28 @@ class UniversalExtractorApp:
             icon_path = os.path.join(app_path, "my_icon.ico")
             if os.path.exists(icon_path): top.iconbitmap(icon_path)
         except: pass
+        
         txt = scrolledtext.ScrolledText(top, wrap=tk.WORD, font=("Consolas", 10))
         txt.pack(fill="both", expand=True, padx=10, pady=10)
-        content = CHANGELOGS.get(self.current_lang, CHANGELOGS["VN"])
+        
+        content = CHANGELOGS.get(self.current_lang, CHANGELOGS["EN"])
         txt.insert(tk.END, content)
+
+        url_to_find = "https://github.com/SS3-4001"
+        start_idx = '1.0'
+        while True:
+            start_idx = txt.search(url_to_find, start_idx, stopindex=tk.END)
+            if not start_idx:
+                break
+            end_idx = f"{start_idx}+{len(url_to_find)}c"
+            txt.tag_add("github_link", start_idx, end_idx)
+            start_idx = end_idx
+
+        txt.tag_config("github_link", foreground="#0056b3", underline=True)
+        txt.tag_bind("github_link", "<Enter>", lambda e: txt.config(cursor="hand2"))
+        txt.tag_bind("github_link", "<Leave>", lambda e: txt.config(cursor=""))
+        txt.tag_bind("github_link", "<Button-1>", lambda e: webbrowser.open(url_to_find))
+
         txt.config(state=tk.DISABLED)
 
     def check_for_updates(self):
